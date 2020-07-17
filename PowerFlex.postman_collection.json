@@ -1149,6 +1149,151 @@
 			]
 		},
 		{
+			"name": "List volumes by id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6b175548-4fbf-44eb-95d9-f42f3e2ad26b",
+						"exec": [
+							"var data = pm.response.json();",
+							"pm.environment.set(\"first_volume\", data[0].id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{token}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"ids\":[\"6b2a094a00000002\"]}"
+				},
+				"url": {
+					"raw": "https://{{ip}}/api/types/Volume/instances/action/queryBySelectedIds",
+					"protocol": "https",
+					"host": [
+						"{{ip}}"
+					],
+					"path": [
+						"api",
+						"types",
+						"Volume",
+						"instances",
+						"action",
+						"queryBySelectedIds"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "GET volumes",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{ip}}/api/types/Volume/instances",
+							"protocol": "https",
+							"host": [
+								"{{ip}}"
+							],
+							"path": [
+								"api",
+								"types",
+								"Volume",
+								"instances"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Cache-Control",
+							"value": "no-cache"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-store"
+						},
+						{
+							"key": "Expires",
+							"value": "Thu, 01 Jan 1970 00:00:00 GMT"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=0"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json;charset=UTF-8"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 18 Nov 2019 21:28:57 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "ScaleIO Gateway"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"mappedSdcInfo\": [\n            {\n                \"sdcId\": \"af2bf1c500000002\",\n                \"sdcIp\": \"192.168.219.12\",\n                \"limitIops\": 0,\n                \"limitBwInMbps\": 0\n            },\n            {\n                \"sdcId\": \"af2bf1c400000001\",\n                \"sdcIp\": \"192.168.219.11\",\n                \"limitIops\": 0,\n                \"limitBwInMbps\": 0\n            },\n            {\n                \"sdcId\": \"af2bf1c300000000\",\n                \"sdcIp\": \"192.168.218.13\",\n                \"limitIops\": 0,\n                \"limitBwInMbps\": 0\n            }\n        ],\n        \"originalExpiryTime\": 0,\n        \"retentionLevels\": [],\n        \"snplIdOfSourceVolume\": null,\n        \"storagePoolId\": \"7285739d00000001\",\n        \"dataLayout\": \"MediumGranularity\",\n        \"vtreeId\": \"1247bccd00000001\",\n        \"snplIdOfAutoSnapshot\": null,\n        \"volumeType\": \"ThinProvisioned\",\n        \"consistencyGroupId\": null,\n        \"ancestorVolumeId\": null,\n        \"notGenuineSnapshot\": false,\n        \"useRmcache\": false,\n        \"managedBy\": \"ScaleIO\",\n        \"lockedAutoSnapshot\": false,\n        \"lockedAutoSnapshotMarkedForRemoval\": false,\n        \"autoSnapshotGroupId\": null,\n        \"compressionMethod\": \"Invalid\",\n        \"sizeInKb\": 528482304,\n        \"creationTime\": 1571285853,\n        \"name\": \"IsoVolOnVxFlex\",\n        \"id\": \"02a82f1900000001\",\n        \"links\": [\n            {\n                \"rel\": \"self\",\n                \"href\": \"/api/instances/Volume::02a82f1900000001\"\n            },\n            {\n                \"rel\": \"/api/Volume/relationship/Statistics\",\n                \"href\": \"/api/instances/Volume::02a82f1900000001/relationships/Statistics\"\n            },\n            {\n                \"rel\": \"/api/parent/relationship/vtreeId\",\n                \"href\": \"/api/instances/VTree::1247bccd00000001\"\n            },\n            {\n                \"rel\": \"/api/parent/relationship/storagePoolId\",\n                \"href\": \"/api/instances/StoragePool::7285739d00000001\"\n            }\n        ]\n    },\n    {\n        \"mappedSdcInfo\": [\n            {\n                \"sdcId\": \"af2bf1c500000002\",\n                \"sdcIp\": \"192.168.219.12\",\n                \"limitIops\": 0,\n                \"limitBwInMbps\": 0\n            },\n            {\n                \"sdcId\": \"af2bf1c400000001\",\n                \"sdcIp\": \"192.168.219.11\",\n                \"limitIops\": 0,\n                \"limitBwInMbps\": 0\n            },\n            {\n                \"sdcId\": \"af2bf1c300000000\",\n                \"sdcIp\": \"192.168.218.13\",\n                \"limitIops\": 0,\n                \"limitBwInMbps\": 0\n            }\n        ],\n        \"originalExpiryTime\": 0,\n        \"retentionLevels\": [],\n        \"snplIdOfSourceVolume\": null,\n        \"storagePoolId\": \"7285739d00000001\",\n        \"dataLayout\": \"MediumGranularity\",\n        \"vtreeId\": \"1247bcce00000002\",\n        \"snplIdOfAutoSnapshot\": null,\n        \"volumeType\": \"ThinProvisioned\",\n        \"consistencyGroupId\": null,\n        \"ancestorVolumeId\": null,\n        \"notGenuineSnapshot\": false,\n        \"useRmcache\": false,\n        \"managedBy\": \"ScaleIO\",\n        \"lockedAutoSnapshot\": false,\n        \"lockedAutoSnapshotMarkedForRemoval\": false,\n        \"autoSnapshotGroupId\": null,\n        \"compressionMethod\": \"Invalid\",\n        \"sizeInKb\": 10737418240,\n        \"creationTime\": 1571818441,\n        \"name\": \"VxFlexHddVolume01\",\n        \"id\": \"02a82f1a00000002\",\n        \"links\": [\n            {\n                \"rel\": \"self\",\n                \"href\": \"/api/instances/Volume::02a82f1a00000002\"\n            },\n            {\n                \"rel\": \"/api/Volume/relationship/Statistics\",\n                \"href\": \"/api/instances/Volume::02a82f1a00000002/relationships/Statistics\"\n            },\n            {\n                \"rel\": \"/api/parent/relationship/vtreeId\",\n                \"href\": \"/api/instances/VTree::1247bcce00000002\"\n            },\n            {\n                \"rel\": \"/api/parent/relationship/storagePoolId\",\n                \"href\": \"/api/instances/StoragePool::7285739d00000001\"\n            }\n        ]\n    },\n    {\n        \"mappedSdcInfo\": null,\n        \"originalExpiryTime\": 0,\n        \"retentionLevels\": [],\n        \"snplIdOfSourceVolume\": null,\n        \"storagePoolId\": \"7285739d00000001\",\n        \"dataLayout\": \"MediumGranularity\",\n        \"vtreeId\": \"1247bccf00000003\",\n        \"snplIdOfAutoSnapshot\": null,\n        \"volumeType\": \"ThickProvisioned\",\n        \"consistencyGroupId\": null,\n        \"ancestorVolumeId\": null,\n        \"notGenuineSnapshot\": false,\n        \"useRmcache\": false,\n        \"managedBy\": \"ScaleIO\",\n        \"lockedAutoSnapshot\": false,\n        \"lockedAutoSnapshotMarkedForRemoval\": false,\n        \"autoSnapshotGroupId\": null,\n        \"compressionMethod\": \"Invalid\",\n        \"sizeInKb\": 8388608,\n        \"creationTime\": 1574072163,\n        \"name\": \"AlbertoVol1\",\n        \"id\": \"02a82f1b00000003\",\n        \"links\": [\n            {\n                \"rel\": \"self\",\n                \"href\": \"/api/instances/Volume::02a82f1b00000003\"\n            },\n            {\n                \"rel\": \"/api/Volume/relationship/Statistics\",\n                \"href\": \"/api/instances/Volume::02a82f1b00000003/relationships/Statistics\"\n            },\n            {\n                \"rel\": \"/api/parent/relationship/vtreeId\",\n                \"href\": \"/api/instances/VTree::1247bccf00000003\"\n            },\n            {\n                \"rel\": \"/api/parent/relationship/storagePoolId\",\n                \"href\": \"/api/instances/StoragePool::7285739d00000001\"\n            }\n        ]\n    },\n    {\n        \"mappedSdcInfo\": [\n            {\n                \"sdcId\": \"af2bf1c300000000\",\n                \"sdcIp\": \"192.168.218.13\",\n                \"limitIops\": 1000,\n                \"limitBwInMbps\": 0\n            }\n        ],\n        \"originalExpiryTime\": 0,\n        \"retentionLevels\": [],\n        \"snplIdOfSourceVolume\": null,\n        \"storagePoolId\": \"7285739d00000001\",\n        \"dataLayout\": \"MediumGranularity\",\n        \"vtreeId\": \"1247bcd000000004\",\n        \"snplIdOfAutoSnapshot\": null,\n        \"volumeType\": \"ThickProvisioned\",\n        \"consistencyGroupId\": null,\n        \"ancestorVolumeId\": null,\n        \"notGenuineSnapshot\": false,\n        \"useRmcache\": false,\n        \"managedBy\": \"ScaleIO\",\n        \"lockedAutoSnapshot\": false,\n        \"lockedAutoSnapshotMarkedForRemoval\": false,\n        \"autoSnapshotGroupId\": null,\n        \"compressionMethod\": \"Invalid\",\n        \"sizeInKb\": 8388608,\n        \"creationTime\": 1574073272,\n        \"name\": \"albvol3\",\n        \"id\": \"02a82f1c00000004\",\n        \"links\": [\n            {\n                \"rel\": \"self\",\n                \"href\": \"/api/instances/Volume::02a82f1c00000004\"\n            },\n            {\n                \"rel\": \"/api/Volume/relationship/Statistics\",\n                \"href\": \"/api/instances/Volume::02a82f1c00000004/relationships/Statistics\"\n            },\n            {\n                \"rel\": \"/api/parent/relationship/vtreeId\",\n                \"href\": \"/api/instances/VTree::1247bcd000000004\"\n            },\n            {\n                \"rel\": \"/api/parent/relationship/storagePoolId\",\n                \"href\": \"/api/instances/StoragePool::7285739d00000001\"\n            }\n        ]\n    },\n    {\n        \"mappedSdcInfo\": [\n            {\n                \"sdcId\": \"af2bf1c500000002\",\n                \"sdcIp\": \"192.168.219.12\",\n                \"limitIops\": 0,\n                \"limitBwInMbps\": 0\n            },\n            {\n                \"sdcId\": \"af2bf1c400000001\",\n                \"sdcIp\": \"192.168.219.11\",\n                \"limitIops\": 0,\n                \"limitBwInMbps\": 0\n            },\n            {\n                \"sdcId\": \"af2bf1c300000000\",\n                \"sdcIp\": \"192.168.218.13\",\n                \"limitIops\": 0,\n                \"limitBwInMbps\": 0\n            }\n        ],\n        \"originalExpiryTime\": 0,\n        \"retentionLevels\": [],\n        \"snplIdOfSourceVolume\": null,\n        \"storagePoolId\": \"7285739c00000000\",\n        \"dataLayout\": \"MediumGranularity\",\n        \"vtreeId\": \"1247bcca00000000\",\n        \"snplIdOfAutoSnapshot\": null,\n        \"volumeType\": \"ThinProvisioned\",\n        \"consistencyGroupId\": null,\n        \"ancestorVolumeId\": null,\n        \"notGenuineSnapshot\": false,\n        \"useRmcache\": false,\n        \"managedBy\": \"ScaleIO\",\n        \"lockedAutoSnapshot\": false,\n        \"lockedAutoSnapshotMarkedForRemoval\": false,\n        \"autoSnapshotGroupId\": null,\n        \"compressionMethod\": \"Invalid\",\n        \"sizeInKb\": 4294967296,\n        \"creationTime\": 1571208563,\n        \"name\": \"VxFlexVol01\",\n        \"id\": \"02a82f1600000000\",\n        \"links\": [\n            {\n                \"rel\": \"self\",\n                \"href\": \"/api/instances/Volume::02a82f1600000000\"\n            },\n            {\n                \"rel\": \"/api/Volume/relationship/Statistics\",\n                \"href\": \"/api/instances/Volume::02a82f1600000000/relationships/Statistics\"\n            },\n            {\n                \"rel\": \"/api/parent/relationship/vtreeId\",\n                \"href\": \"/api/instances/VTree::1247bcca00000000\"\n            },\n            {\n                \"rel\": \"/api/parent/relationship/storagePoolId\",\n                \"href\": \"/api/instances/StoragePool::7285739c00000000\"\n            }\n        ]\n    },\n    {\n        \"mappedSdcInfo\": [\n            {\n                \"sdcId\": \"af2bf1c400000001\",\n                \"sdcIp\": \"192.168.219.11\",\n                \"limitIops\": 0,\n                \"limitBwInMbps\": 0\n            },\n            {\n                \"sdcId\": \"af2bf1c500000002\",\n                \"sdcIp\": \"192.168.219.12\",\n                \"limitIops\": 0,\n                \"limitBwInMbps\": 0\n            }\n        ],\n        \"originalExpiryTime\": 0,\n        \"retentionLevels\": [],\n        \"snplIdOfSourceVolume\": null,\n        \"storagePoolId\": \"7285739d00000001\",\n        \"dataLayout\": \"MediumGranularity\",\n        \"vtreeId\": \"1247bcd700000005\",\n        \"snplIdOfAutoSnapshot\": null,\n        \"volumeType\": \"ThickProvisioned\",\n        \"consistencyGroupId\": null,\n        \"ancestorVolumeId\": null,\n        \"notGenuineSnapshot\": false,\n        \"useRmcache\": false,\n        \"managedBy\": \"ScaleIO\",\n        \"lockedAutoSnapshot\": false,\n        \"lockedAutoSnapshotMarkedForRemoval\": false,\n        \"autoSnapshotGroupId\": null,\n        \"compressionMethod\": \"Invalid\",\n        \"sizeInKb\": 8388608,\n        \"creationTime\": 1574074530,\n        \"name\": \"albvol2\",\n        \"id\": \"02a82f2300000005\",\n        \"links\": [\n            {\n                \"rel\": \"self\",\n                \"href\": \"/api/instances/Volume::02a82f2300000005\"\n            },\n            {\n                \"rel\": \"/api/Volume/relationship/Statistics\",\n                \"href\": \"/api/instances/Volume::02a82f2300000005/relationships/Statistics\"\n            },\n            {\n                \"rel\": \"/api/parent/relationship/vtreeId\",\n                \"href\": \"/api/instances/VTree::1247bcd700000005\"\n            },\n            {\n                \"rel\": \"/api/parent/relationship/storagePoolId\",\n                \"href\": \"/api/instances/StoragePool::7285739d00000001\"\n            }\n        ]\n    }\n]"
+				}
+			]
+		},
+		{
 			"name": "Get Volume Statistics",
 			"request": {
 				"auth": {
@@ -1255,7 +1400,7 @@
 			]
 		},
 		{
-			"name": "GET SDC volumes",
+			"name": "SDC volumes",
 			"request": {
 				"auth": {
 					"type": "basic",
@@ -1823,6 +1968,158 @@
 			]
 		},
 		{
+			"name": "Resize volume",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{token}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"volumeSizeInGb\": \"2\",\n    \"storagePoolId\": \"7285739d00000001\",\n    \"name\": \"AlbertoVol4\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{ip}}/api/types/Volume/instances",
+					"protocol": "https",
+					"host": [
+						"{{ip}}"
+					],
+					"path": [
+						"api",
+						"types",
+						"Volume",
+						"instances"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Create volume",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"volumeSizeInGb\": \"2\",\n    \"storagePoolId\": \"7285739d00000001\",\n    \"name\": \"AlbertoVol4\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{ip}}/api/types/Volume/instances",
+							"protocol": "https",
+							"host": [
+								"{{ip}}"
+							],
+							"path": [
+								"api",
+								"types",
+								"Volume",
+								"instances"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=0"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "Thu, 01 Jan 1970 00:00:00 GMT"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-store"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json;charset=UTF-8"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 18 Nov 2019 21:30:37 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "ScaleIO Gateway"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": \"02a82f2400000006\"\n}"
+				}
+			]
+		},
+		{
 			"name": "QuerySelectedSdcStats",
 			"request": {
 				"auth": {
@@ -2133,6 +2430,160 @@
 			]
 		},
 		{
+			"name": "Map Volume to SDC",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{token}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"sdcId\": \"af2bf1c400000001\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{ip}}/api/instances/Volume::XXXXXXXXXXXXXX/action/removeMappedSdc",
+					"protocol": "https",
+					"host": [
+						"{{ip}}"
+					],
+					"path": [
+						"api",
+						"instances",
+						"Volume::XXXXXXXXXXXXXX",
+						"action",
+						"removeMappedSdc"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Remove mapped SDC",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"sdcId\": \"af2bf1c300000000\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{ip}}/api/instances/Volume::02a82f2300000005/action/removeMappedSdc",
+							"protocol": "https",
+							"host": [
+								"{{ip}}"
+							],
+							"path": [
+								"api",
+								"instances",
+								"Volume::02a82f2300000005",
+								"action",
+								"removeMappedSdc"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=0"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "Thu, 01 Jan 1970 00:00:00 GMT"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-store"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json;charset=UTF-8"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 18 Nov 2019 21:25:59 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "ScaleIO Gateway"
+						}
+					],
+					"cookie": [],
+					"body": "{}"
+				}
+			]
+		},
+		{
 			"name": "Remove mapped SDC",
 			"request": {
 				"auth": {
@@ -2285,6 +2736,160 @@
 					"body": "{}"
 				}
 			]
+		},
+		{
+			"name": "Create Snapshot",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{token}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"snapshotDefs\": [\n    {\n      \"volumeId\": \"a4b5862000000000\"\n    }\n  ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{ip}}/api/instances/System::{{first_system}}/action/snapshotVolumes",
+					"protocol": "https",
+					"host": [
+						"{{ip}}"
+					],
+					"path": [
+						"api",
+						"instances",
+						"System::{{first_system}}",
+						"action",
+						"snapshotVolumes"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Remove mapped SDC",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"sdcId\": \"af2bf1c300000000\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{ip}}/api/instances/Volume::02a82f2300000005/action/removeMappedSdc",
+							"protocol": "https",
+							"host": [
+								"{{ip}}"
+							],
+							"path": [
+								"api",
+								"instances",
+								"Volume::02a82f2300000005",
+								"action",
+								"removeMappedSdc"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=0"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "Thu, 01 Jan 1970 00:00:00 GMT"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-store"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json;charset=UTF-8"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 18 Nov 2019 21:25:59 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "ScaleIO Gateway"
+						}
+					],
+					"cookie": [],
+					"body": "{}"
+				}
+			]
 		}
 	],
 	"event": [
@@ -2311,11 +2916,11 @@
 	],
 	"variable": [
 		{
-			"id": "4a6ae8c0-15e0-4bfe-9fbc-ebca84f45f2d",
+			"id": "528eb706-8ea8-4f58-81a5-2df815b6565e",
 			"value": "LGLBX200.lss.emc.com"
 		},
 		{
-			"id": "a4176df4-0e2f-47ac-af2b-4542ba2da7e3",
+			"id": "02ec3936-2129-4d1b-84de-3d20a49c28ac",
 			"key": "SystemID",
 			"value": "0ca110b75dd4300f"
 		}
